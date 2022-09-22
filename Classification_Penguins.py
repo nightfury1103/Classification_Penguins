@@ -40,8 +40,7 @@ else:
             'body_mass_g': body_mass_g,
             'sex': sex,
         }
-        features = pd.DataFrame(data, index=[0])
-        return features
+        return pd.DataFrame(data, index=[0])
     input_df = user_input_features()
 
 # Combine user input features with entire penguins dataset
@@ -58,12 +57,9 @@ for col in encode:
 df = df[:1]
 
 st.subheader('User Input Features')
-if uploaded_file is not None:
-    st.write(df)
-else:
+if uploaded_file is None:
     st.write('Awaiting CSV file to be uploaded. Currently using example input parameters (shown below).')
-    st.write(df)
-
+st.write(df)
 load_clf = pickle.load(open('penguins_clf.pkl', 'rb'))
 
 
